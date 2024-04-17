@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Autoplay Audio</title>
+    <style>
+        /* Full-screen background setup */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .bg {
+            /* Set background image and ensure it fits completely on the screen */
+            background-image: url('background.png');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain; /* Changed from cover to contain */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling the play button */
+        .play-button {
+            background-color: rgba(128, 128, 128, 0.5); /* Semi-transparent grey */
+            border: none;
+            color: white;
+            padding: 100px 100px; /* Increased button size */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 20px 2px; /* Increased margin */
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            background-color: rgba(105, 105, 105, 0.5); /* Darker grey on hover */
+        }
+    </style>
 </head>
 <body>
-    <audio autoplay controls>
-        <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/James_Geburtstagssong.mp3" type="audio/mpeg">
+
+<div class="bg">
+    <audio id="audioPlayer" controls style="display:none;">
+        <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/James_Geburtstagssong.mp3"type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <!-- Play button to trigger the audio -->
+    <button onclick="document.getElementById('audioPlayer').play()" class="play-button">Play</button>
+</div>
+
 </body>
 </html>
