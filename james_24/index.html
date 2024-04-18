@@ -25,7 +25,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end; 
-            z-index: 2; /* Ensures the image is above the text */
+            z-index: 2;
         }
 
         .bg {
@@ -50,7 +50,7 @@
             transition: all 0.3s;
             text-align: center;
             width: auto;
-            z-index: 3; /* Ensures the button is above everything else */
+            z-index: 3;
         }
 
         .play-button:hover {
@@ -59,13 +59,13 @@
 
         .text-container {
             position: absolute;
-            bottom: -30%; /* Start completely off the screen */
+            bottom: -30%;
             width: 100%;
             text-align: center;
             font-size: 40px;
             color: white;
-            transition: bottom 60s linear; /* Slower transition */
-            z-index: 1; /* Ensures text is below the image */
+            transition: bottom 60s linear; /* Scroll Speed */
+            z-index: 1;
         }
     </style>
 </head>
@@ -104,7 +104,7 @@
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
-        scrollText.style.bottom = '100%'; // It moves upwards slower now
+        scrollText.style.bottom = '100%';
     }
 </script>
 
