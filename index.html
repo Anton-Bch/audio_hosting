@@ -7,31 +7,47 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
-        .bg {
-            background-image: url('background.png');
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
+        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100%;
             position: relative;
             overflow: hidden;
+            background-color: rgb(129, 31, 1);
+        }
+
+        .image-wrapper {
+            width: 100%; 
+            max-height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+        }
+
+        .bg {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
         }
 
         .play-button {
             position: absolute;
+            align-self: center;
             bottom: 40px;
             background-color: rgba(99, 99, 99, 0.5);
             border: none;
             color: rgba(255, 255, 255, 0.8);
             padding: 100px 140px;
-            text-align: center;
-            font-size: 120px;
+            font-size: 90px;
             cursor: pointer;
             border-radius: 20px;
             transition: all 0.3s;
+            text-align: center;
+            width: auto;
         }
 
         .play-button:hover {
@@ -41,10 +57,16 @@
 </head>
 <body>
 
-<div class="bg" id="background">
-    <audio id="audioPlayer" controls style="display:none;">
-        <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/James_Geburtstagssong.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <button onclick="document.getElementById('audioPlayer').play()" class="play-button">Play</button>
-</
+<div class="container">
+    <div class="image-wrapper">
+        <img src="background.png" alt="Background" class="bg">
+        <audio id="audioPlayer" controls style="display:none;">
+            <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/James_Geburtstagssong.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <button onclick="document.getElementById('audioPlayer').play()" class="play-button">Play</button>
+    </div>
+</div>
+
+</body>
+</html>
