@@ -59,12 +59,12 @@
 
         .text-container {
             position: absolute;
-            bottom: -30%;
+            bottom: -35%;
             width: 100%;
             text-align: center;
-            font-size: 40px;
+            font-size: 50px;
             color: white;
-            transition: bottom 60s linear; /* Scroll Speed */
+            transition: bottom 80s linear; /* Scroll Speed */
             z-index: 1;
         }
     </style>
@@ -101,12 +101,38 @@
         var playButton = document.querySelector('.play-button');
         var scrollText = document.getElementById('scrollText');
 
+        // Disable transitions temporarily to reset position instantly
+        scrollText.style.transition = 'none';
+        scrollText.style.bottom = '-35%';  // Reset to the original bottom value
+        scrollText.offsetHeight;  // Force reflow to apply the changes immediately
+
+        // Re-enable transition and start playback
+        scrollText.style.transition = 'bottom 80s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
         scrollText.style.bottom = '100%';
+
+        // Add event listener for when audio ends
+        audio.onended = function() {
+            resetElements();
+        };
+    }
+
+    function resetElements() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Ensure transition is off when resetting
+        scrollText.style.transition = 'none';
+        playButton.style.visibility = 'visible';
+        scrollText.style.visibility = 'hidden';
+        scrollText.style.bottom = '-35%';  // Reset to the original bottom value
+        audio.currentTime = 0;  // Optionally reset the audio time if needed
     }
 </script>
+
 
 </body>
 </html>
