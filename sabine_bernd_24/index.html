@@ -14,7 +14,7 @@
             justify-content: center;
             height: 100%;
             overflow: hidden;
-            background-color: rgb(129, 31, 1);
+            background-color: rgb(48, 32, 28);
             position: relative;
         }
 
@@ -59,12 +59,10 @@
 
         .text-container {
             position: absolute;
-            bottom: -35%;
             width: 100%;
             text-align: center;
-            font-size: 50px;
+            font-size: 35px;
             color: white;
-            transition: bottom 80s linear; /* Scroll Speed */
             z-index: 1;
         }
     </style>
@@ -83,17 +81,17 @@
         Mit einem Lächeln, herzlich und rein,<br>
         Hilft Sabine im Museum groß und klein.<br>
         Häkeln ist ihre Kunst zu Haus<br>
-        Jedes Stück erntet viel Applaus.<br><br>
+        Jedes Stück erntet viel Applaus.<br><br><br><br>
 
         Bernd, der Handwerker ist stark und klug,<br>
-        Baut und werkelt, kriegt nie genug.<br>
+        Baut und werkelt, kriegt nie genug.<br><br><br><br>
         Auch am Grill und am Herd, da glänzt er sehr,<br>
         Das Essen ist lecker, die Teller sind leer.<br><br>
 
         Der Ande im Tor, mit seinem Ball,<br>
-        Spielt Handball, leidenschaftlich, einmalig überall.<br>
+        Spielt Handball, leidenschaftlich, einmalig überall.<br><br>
         Kein Ball geht an ihm vorbei <br>
-        Er zaubert den Sieg seines Teams herbei <br><br>
+        Er zaubert den Sieg seines Teams herbei <br><br><br><br><br>
 
         Mit Eddy eurem Hund, treu und wach,<br>
         Ist Leben im Hause, Tag und Nacht.<br>
@@ -101,7 +99,7 @@
         Er ist Teil der Familie, voller Lebenslust.<br><br>
 
         Lasst uns singen und lachen, die Gläser erheben,<br>
-        Sabine und Bernd, euch können alle nur lieben!<br>
+        Sabine und Bernd, euch können alle nur lieben!<br><br>
         Zum Geburtstag viel Glück, das ist klar,<br>
         Wir sind froh, dass es euch gibt, Jahr für Jahr!
     </div>
@@ -116,11 +114,11 @@
 
         // Disable transitions temporarily to reset position instantly
         scrollText.style.transition = 'none';
-        scrollText.style.bottom = '-35%';  // Reset to the original bottom value
+        scrollText.style.bottom = '-78%';  // Reset to the original bottom value
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
         // Re-enable transition and start playback
-        scrollText.style.transition = 'bottom 80s linear';
+        scrollText.style.transition = 'bottom 200s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
