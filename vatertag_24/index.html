@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgb(48, 32, 28);
+            position: relative;
+        }
+
+        .image-wrapper {
+            width: 100%; 
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            z-index: 2;
+        }
+
+        .bg {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .play-button {
+            align-self: center;
+            bottom: 40px;
+            background-color: rgba(99, 99, 99, 0.6);
+            border: none;
+            color: rgba(255, 255, 255, 1);
+            padding: 100px 200px;
+            font-size: 90px;
+            margin-top: 40px;
+            margin-bottom: 180px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            text-align: center;
+            width: auto;
+            z-index: 3;
+        }
+
+        .play-button:hover {
+            background-color: rgba(105, 105, 105, 0.5);
+        }
+
+        .text-container {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="image-wrapper">
+        <img src="Vatertag-Final.png" alt="Background" class="bg">
+        <audio id="audioPlayer" controls style="display:none;">
+            <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/vatertag_24/Vatertag-Song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="text-container" style="visibility: hidden;" id="scrollText">
+        Mit einem Lächeln, herzlich und rein,<br>
+        Hilft Sabine im Museum groß und klein.<br>
+        Häkeln ist ihre Kunst zu Haus<br>
+        Jedes Stück erntet viel Applaus.<br><br><br><br>
+
+        Bernd, der Handwerker ist stark und klug,<br>
+        Baut und werkelt, kriegt nie genug.<br><br><br><br>
+        Auch am Grill und am Herd, da glänzt er sehr,<br>
+        Das Essen ist lecker, die Teller sind leer.<br><br>
+
+        Der Ande im Tor, mit seinem Ball,<br>
+        Spielt Handball, leidenschaftlich, einmalig überall.<br><br>
+        Kein Ball geht an ihm vorbei <br>
+        Er zaubert den Sieg seines Teams herbei <br><br><br><br><br>
+
+        Mit Eddy eurem Hund, treu und wach,<br>
+        Ist Leben im Hause, Tag und Nacht.<br>
+        Mit Wedeln und Bellen, kennt er kein' Frust,<br>
+        Er ist Teil der Familie, voller Lebenslust.<br><br>
+
+        Lasst uns singen und lachen, die Gläser erheben,<br>
+        Sabine und Bernd, euch können alle nur lieben!<br><br>
+        Zum Geburtstag viel Glück, das ist klar,<br>
+        Wir sind froh, dass es euch gibt, Jahr für Jahr!
+    </div>
+    <button onclick="playAudio()" class="play-button">Play</button>
+</div>
+
+<script>
+    function playAudio() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Disable transitions temporarily to reset position instantly
+        scrollText.style.transition = 'none';
+        scrollText.style.bottom = '-78%';  // Reset to the original bottom value
+        scrollText.offsetHeight;  // Force reflow to apply the changes immediately
+
+        // Re-enable transition and start playback
+        scrollText.style.transition = 'bottom 200s linear';
+        audio.play();
+        playButton.style.visibility = 'hidden';
+        scrollText.style.visibility = 'visible';
+        scrollText.style.bottom = '100%';
+
+        // Add event listener for when audio ends
+        audio.onended = function() {
+            resetElements();
+        };
+    }
+
+    function resetElements() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Ensure transition is off when resetting
+        scrollText.style.transition = 'none';
+        playButton.style.visibility = 'visible';
+        scrollText.style.visibility = 'hidden';
+        scrollText.style.bottom = '-35%';  // Reset to the original bottom value
+        audio.currentTime = 0;  // Optionally reset the audio time if needed
+    }
+</script>
+
+
+</body>
+</html>
