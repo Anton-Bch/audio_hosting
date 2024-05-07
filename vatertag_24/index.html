@@ -14,7 +14,7 @@
             justify-content: center;
             height: 100%;
             overflow: hidden;
-            background-color: rgb(48, 32, 28);
+            background-color: rgb(31, 27, 26);
             position: relative;
         }
 
@@ -78,35 +78,33 @@
         </audio>
     </div>
     <div class="text-container" style="visibility: hidden;" id="scrollText">
-        Mit einem Lächeln, herzlich und rein,<br>
-        Hilft Sabine im Museum groß und klein.<br>
-        Häkeln ist ihre Kunst zu Haus<br>
-        Jedes Stück erntet viel Applaus.<br><br><br><br>
-
-        Bernd, der Handwerker ist stark und klug,<br>
-        Baut und werkelt, kriegt nie genug.<br><br><br><br>
-        Auch am Grill und am Herd, da glänzt er sehr,<br>
-        Das Essen ist lecker, die Teller sind leer.<br><br>
-
-        Der Ande im Tor, mit seinem Ball,<br>
-        Spielt Handball, leidenschaftlich, einmalig überall.<br><br>
-        Kein Ball geht an ihm vorbei <br>
-        Er zaubert den Sieg seines Teams herbei <br><br><br><br><br>
-
-        Mit Eddy eurem Hund, treu und wach,<br>
-        Ist Leben im Hause, Tag und Nacht.<br>
-        Mit Wedeln und Bellen, kennt er kein' Frust,<br>
-        Er ist Teil der Familie, voller Lebenslust.<br><br>
-
-        Lasst uns singen und lachen, die Gläser erheben,<br>
-        Sabine und Bernd, euch können alle nur lieben!<br><br>
-        Zum Geburtstag viel Glück, das ist klar,<br>
-        Wir sind froh, dass es euch gibt, Jahr für Jahr!
+        Du lehrst uns zu träumen, zu glauben, zu streben,<br>
+        Du schenkst uns den Mut, unser Bestes zu geben.<br><br><br>
+        
+        Wenn beim Programmieren, Code nicht klappt,<br>
+        Und ein Fehler durch die Zeilen tappt,<br>
+        Hast du Ideen zum Lösen der Probleme<br>
+        du verstehst sie direkt, die komplizierten Systeme. <br><br>
+        
+        Und wenn das Fahrrad einen Platten hat,<br>
+        Oder die Kette klemmt im Rad,<br>
+        Nimmst du die Werkzeuge in die Hand,<br>
+        Machst alles wieder fahrbereit.<br><br>
+        
+        Auch beim Lernen, wenn's mal schwierig ist,<br>
+        stehst du uns zur Seite, immer als Optimist.<br><br>
+        
+        Du gibst uns den Mut, nicht aufzugeben,<br>
+        In all unseren Träumen nach vorne zu streben.<br><br>
+        
+        Für all deine Liebe, deinen beständigen Rat,<br>
+        Sind wir dir dankbar, jeden Tag.<br>
     </div>
     <button onclick="playAudio()" class="play-button">Play</button>
 </div>
 
 <script>
+    const bottom = "-44%";
     function playAudio() {
         var audio = document.getElementById('audioPlayer');
         var playButton = document.querySelector('.play-button');
@@ -114,15 +112,15 @@
 
         // Disable transitions temporarily to reset position instantly
         scrollText.style.transition = 'none';
-        scrollText.style.bottom = '-78%';  // Reset to the original bottom value
+        scrollText.style.bottom = bottom;  // Reset to the original bottom value
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
         // Re-enable transition and start playback
-        scrollText.style.transition = 'bottom 200s linear';
+        scrollText.style.transition = 'bottom 160s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
-        scrollText.style.bottom = '100%';
+        scrollText.style.bottom = '100%'; // Start scrolling
 
         // Add event listener for when audio ends
         audio.onended = function() {
@@ -139,7 +137,7 @@
         scrollText.style.transition = 'none';
         playButton.style.visibility = 'visible';
         scrollText.style.visibility = 'hidden';
-        scrollText.style.bottom = '-35%';  // Reset to the original bottom value
+        scrollText.style.bottom = bottom;  // Reset to the original bottom value
         audio.currentTime = 0;  // Optionally reset the audio time if needed
     }
 </script>
