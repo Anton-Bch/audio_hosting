@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgb(31, 27, 26);
+            position: relative;
+        }
+
+        .image-wrapper {
+            width: 100%; 
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            z-index: 2;
+        }
+
+        .bg {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .play-button {
+            align-self: center;
+            bottom: 40px;
+            background-color: rgba(99, 99, 99, 0.6);
+            border: none;
+            color: rgba(255, 255, 255, 1);
+            padding: 100px 200px;
+            font-size: 90px;
+            margin-top: 40px;
+            margin-bottom: 180px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            text-align: center;
+            width: auto;
+            z-index: 3;
+        }
+
+        .play-button:hover {
+            background-color: rgba(105, 105, 105, 0.5);
+        }
+
+        .text-container {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="image-wrapper">
+        <img src="Bears-Max-up.png" alt="Background" class="bg">
+        <audio id="audioPlayer" controls style="display:none;">
+            <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/max_24/MaxSong-Shortened.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="text-container" style="visibility: hidden;" id="scrollText">
+        Du lehrst uns zu träumen, zu glauben, zu streben,<br>
+        Du schenkst uns den Mut, unser Bestes zu geben.<br><br><br>
+        
+        Wenn beim Programmieren, Code nicht klappt,<br>
+        Und ein Fehler durch die Zeilen tappt,<br>
+        Hast du Ideen zum Lösen der Probleme<br>
+        du verstehst sie direkt, die komplizierten Systeme. <br><br>
+        
+        Und wenn das Fahrrad einen Platten hat,<br>
+        Oder die Kette klemmt im Rad,<br>
+        Nimmst du die Werkzeuge in die Hand,<br>
+        Machst alles wieder fahrbereit.<br><br>
+        
+        Auch beim Lernen, wenn's mal schwierig ist,<br>
+        stehst du uns zur Seite, immer als Optimist.<br><br>
+        
+        Du gibst uns den Mut, nicht aufzugeben,<br>
+        In all unseren Träumen nach vorne zu streben.<br><br>
+        
+        Für all deine Liebe, deinen beständigen Rat,<br>
+        Sind wir dir dankbar, jeden Tag.<br>
+    </div>
+    <button onclick="playAudio()" class="play-button">Play</button>
+</div>
+
+<script>
+    const bottom = "-44%";
+    function playAudio() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Disable transitions temporarily to reset position instantly
+        scrollText.style.transition = 'none';
+        scrollText.style.bottom = bottom;  // Reset to the original bottom value
+        scrollText.offsetHeight;  // Force reflow to apply the changes immediately
+
+        // Re-enable transition and start playback
+        scrollText.style.transition = 'bottom 160s linear';
+        audio.play();
+        playButton.style.visibility = 'hidden';
+        scrollText.style.visibility = 'visible';
+        scrollText.style.bottom = '100%'; // Start scrolling
+
+        // Add event listener for when audio ends
+        audio.onended = function() {
+            resetElements();
+        };
+    }
+
+    function resetElements() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Ensure transition is off when resetting
+        scrollText.style.transition = 'none';
+        playButton.style.visibility = 'visible';
+        scrollText.style.visibility = 'hidden';
+        scrollText.style.bottom = bottom;  // Reset to the original bottom value
+        audio.currentTime = 0;  // Optionally reset the audio time if needed
+    }
+</script>
+
+
+</body>
+</html>
