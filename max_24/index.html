@@ -59,11 +59,13 @@
 
         .text-container {
             position: absolute;
+            bottom: 0; /* Initial bottom position will be adjusted via JavaScript */
             width: 100%;
             text-align: center;
             font-size: 35px;
             color: white;
             z-index: 1;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -77,46 +79,46 @@
             Your browser does not support the audio element.
         </audio>
     </div>
-    <div class="text-container" style="visibility: hidden;" id="scrollText">
-        Du lehrst uns zu träumen, zu glauben, zu streben,<br>
-        Du schenkst uns den Mut, unser Bestes zu geben.<br><br><br>
-        
-        Wenn beim Programmieren, Code nicht klappt,<br>
-        Und ein Fehler durch die Zeilen tappt,<br>
-        Hast du Ideen zum Lösen der Probleme<br>
-        du verstehst sie direkt, die komplizierten Systeme. <br><br>
-        
-        Und wenn das Fahrrad einen Platten hat,<br>
-        Oder die Kette klemmt im Rad,<br>
-        Nimmst du die Werkzeuge in die Hand,<br>
-        Machst alles wieder fahrbereit.<br><br>
-        
-        Auch beim Lernen, wenn's mal schwierig ist,<br>
-        stehst du uns zur Seite, immer als Optimist.<br><br>
-        
-        Du gibst uns den Mut, nicht aufzugeben,<br>
-        In all unseren Träumen nach vorne zu streben.<br><br>
-        
-        Für all deine Liebe, deinen beständigen Rat,<br>
-        Sind wir dir dankbar, jeden Tag.<br>
+    <div class="text-container" id="scrollText">
+        Wir sind die Bärenbande, immer gut drauf<br>
+        Trinken Sangria und Bier, Tag ein Tag aus<br><br><br>
+
+        Wir tanzen und singen und feiern die Nacht,<br>
+        Denn das ist, was uns Freude macht.<br><br><br>
+
+        Max, dein Geburtstag, unvergessen bleibt,<br>
+        weil die Bärenbande immer zusammen bleibt.<br><br><br>
+
+        Heut spieln wir Bierpong, zielen genau,<br>
+        Der Gewinner jubelt, die Hälfte ist blau.<br><br><br>
+
+        Also heb deinen Becher, sei bereit,<br>
+        für die Bärenbande, jederzeit.<br><br><br>
+
+        Wir rufen alle, das ist nicht schwer,<br>
+        Wie macht der Bär? <br>
+        Der Bär macht leeeer!<br>
     </div>
     <button onclick="playAudio()" class="play-button">Play</button>
 </div>
 
 <script>
-    const bottom = "-44%";
     function playAudio() {
         var audio = document.getElementById('audioPlayer');
         var playButton = document.querySelector('.play-button');
         var scrollText = document.getElementById('scrollText');
 
-        // Disable transitions temporarily to reset position instantly
+        // Calculate the initial bottom offset so that the first line is hidden
+        var initialBottom = -scrollText.clientHeight-18 + 'px';
+        console.log(initialBottom);
+
+        // Set the initial bottom position
         scrollText.style.transition = 'none';
-        scrollText.style.bottom = bottom;  // Reset to the original bottom value
+        scrollText.style.bottom = initialBottom;
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
-        // Re-enable transition and start playback
-        scrollText.style.transition = 'bottom 160s linear';
+        // Re-enable transition and start scrolling
+        scrollText.style.transition = 'bottom 185s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
@@ -133,15 +135,17 @@
         var playButton = document.querySelector('.play-button');
         var scrollText = document.getElementById('scrollText');
 
+        // Calculate the initial bottom offset so that the first line is hidden
+        var initialBottom = -scrollText.clientHeight + window.innerHeight + 'px';
+
         // Ensure transition is off when resetting
         scrollText.style.transition = 'none';
         playButton.style.visibility = 'visible';
         scrollText.style.visibility = 'hidden';
-        scrollText.style.bottom = bottom;  // Reset to the original bottom value
+        scrollText.style.bottom = initialBottom;  // Reset to the original bottom value
         audio.currentTime = 0;  // Optionally reset the audio time if needed
     }
 </script>
-
 
 </body>
 </html>
