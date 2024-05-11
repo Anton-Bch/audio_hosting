@@ -14,7 +14,7 @@
             justify-content: center;
             height: 100%;
             overflow: hidden;
-            background-color: rgb(31, 7, 126);
+            background-color: rgb(63, 27, 51);
             position: relative;
         }
 
@@ -80,24 +80,26 @@
         </audio>
     </div>
     <div class="text-container" id="scrollText">
-        Du bist immer da, gibst Rat und auch Mut,
-        Und glaubst an uns, machst alles gut.
-        Du gibst uns die Kraft, nach vorne zu schauen,
-        Auf unsere Fähigkeiten zu vertrauen.
+        Du bist immer da, gibst Rat und auch Mut,<br>
+        Und glaubst an uns, machst alles gut.<br><br><br><br>
 
-        Du hast ein Plan für alles, behältst stets den Überblick,
-        Schenkst uns allen, Momente voll Glück. 
-        Auch wenn wir mal streiten, die Wogen sich türmen,
-        Bewahrst du die Ruhe, lässt nichts erzürnen.
-        Du hörst uns zu, mit Herz und Verstand,
-        Damit sich die Lage schnellstmöglich entspannt. 
+        Du gibst uns die Kraft, nach vorne zu schauen,<br>
+        Auf unsere Fähigkeiten zu vertrauen.<br><br><br><br>
 
-        Egal, was uns plagt, sei’s groß oder klein,
-        Du bist da, lässt uns niemals allein.
-        Danke, dass du immer an unserer Seite stehst,
-        Mit Rat und Liebe den Weg mit uns gehst.
-        Drum sagen wir dir heut´ und an allen Tagen:
-        Wir sind so froh, dass wir dich als Mutter haben.
+        Du hast ein Plan für alles, behältst stets den Überblick,<br>
+        Schenkst uns allen, Momente voll Glück. <br><br><br>
+
+        Auch wenn wir mal streiten, die Wogen sich türmen,<br>
+        Bewahrst du die Ruhe, lässt nichts erzürnen.<br>
+        Du hörst uns zu, mit Herz und Verstand,<br>
+        Damit sich die Lage schnellstmöglich entspannt. <br><br><br><br>
+
+        Egal, was uns plagt, sei’s groß oder klein,<br>
+        Du bist da, lässt uns niemals allein.<br>
+        Danke, dass du immer an unserer Seite stehst,<br>
+        Mit Rat und Liebe den Weg mit uns gehst.<br><br><br>
+        Drum sagen wir dir heut´ und an allen Tagen:<br>
+        Wir sind so froh, dass wir dich als Mutter haben.<br>
     </div>
     <button onclick="playAudio()" class="play-button">Play</button>
 </div>
@@ -109,7 +111,7 @@
         var scrollText = document.getElementById('scrollText');
 
         // Calculate the initial bottom offset so that the first line is hidden
-        var initialBottom = -scrollText.clientHeight-18 + 'px';
+        var initialBottom = -scrollText.clientHeight-32 + 'px';
         console.log(initialBottom);
 
         // Set the initial bottom position
@@ -118,7 +120,7 @@
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
         // Re-enable transition and start scrolling
-        scrollText.style.transition = 'bottom 185s linear';
+        scrollText.style.transition = 'bottom 240s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
