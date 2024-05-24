@@ -14,7 +14,7 @@
             justify-content: center;
             height: 100%;
             overflow: hidden;
-            background-color: rgb(31, 7, 126);
+            background-color: rgb(0, 0, 0);
             position: relative;
         }
 
@@ -73,31 +73,33 @@
 
 <div class="container">
     <div class="image-wrapper">
-        <img src="Song-Cover-up.jpg" alt="Background" class="bg">
+        <img src="timo-smaller.png" alt="Background" class="bg">
         <audio id="audioPlayer" controls style="display:none;">
             <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/timo_24/timo-lied-24.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
     </div>
     <div class="text-container" id="scrollText">
-        Wir sind die Bärenbande, immer gut drauf<br>
-        Trinken Sangria und Bier, Tag ein Tag aus<br><br><br>
-
-        Wir tanzen und singen und feiern die Nacht,<br>
-        Denn das ist, was uns Freude macht.<br><br>
-
-        Max, dein Geburtstag, unvergessen bleibt,<br>
-        weil die Bärenbande immer zusammen bleibt.<br><br><br>
-
-        Heut spieln wir Bierpong, zielen genau,<br>
-        Der Gewinner jubelt, die Hälfte ist blau.<br><br>
-
-        Also heb deinen Becher, sei bereit,<br>
-        für die Bärenbande, jederzeit.<br><br>
-
-        Wir rufen alle, das ist nicht schwer,<br>
-        Wie macht der Bär? <br>
-        Der Bär macht leeeer!<br>
+        Die Eisbären, sie laufen, sie singen ihr Lied,<br>
+        Schritte im Takt, die Kälte verfliegt.<br><br>
+        
+        Die Waden, sie brennen, die Lunge, sie sticht,<br>
+        der Wille stark, niemals zerbricht.<br><br>
+        
+        Runde um Runde um den Otto-Maigler-See,<br>
+        egal ob Regen, Hagel, Sonne oder Schnee.<br><br>
+        
+        Die Eisbären, sie rennen und bleiben nicht stehen,<br>
+        sie halten zusammen, das kann man sehen.<br><br>
+        
+        Der See umarmt sie in frostiger Ruh,<br>
+        die Seele erfrischt, die Geister im Nu.<br><br>
+        
+        Das Wasser schneidet, kalt wie Stahl,<br>
+        sie fühlen kaum des Frostes Qual.<br><br>
+        
+        Im eisigen Wasser, das klirrend lacht,<br>
+        der Körper müde, wieder erwacht.<br>    
     </div>
     <button onclick="playAudio()" class="play-button">Play</button>
 </div>
@@ -109,7 +111,7 @@
         var scrollText = document.getElementById('scrollText');
 
         // Calculate the initial bottom offset so that the first line is hidden
-        var initialBottom = -scrollText.clientHeight-18 + 'px';
+        var initialBottom = -scrollText.clientHeight+14 + 'px';
         console.log(initialBottom);
 
         // Set the initial bottom position
