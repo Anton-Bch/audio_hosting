@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgb(0, 0, 0);
+            position: relative;
+        }
+
+        .image-wrapper {
+            width: 100%; 
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            z-index: 2;
+        }
+
+        .bg {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .play-button {
+            align-self: center;
+            bottom: 40px;
+            background-color: rgba(99, 99, 99, 0.6);
+            border: none;
+            color: rgba(255, 255, 255, 1);
+            padding: 100px 200px;
+            font-size: 90px;
+            margin-top: 40px;
+            margin-bottom: 100px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s;
+            text-align: center;
+            width: auto;
+            z-index: 3;
+        }
+
+        .play-button:hover {
+            background-color: rgba(105, 105, 105, 0.5);
+        }
+
+        .text-container {
+            position: absolute;
+            bottom: 0; /* Initial bottom position will be adjusted via JavaScript */
+            width: 100%;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+            z-index: 1;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="image-wrapper">
+        <img src="cover-kimberly-24.webp" alt="Background" class="bg">
+        <audio id="audioPlayer" controls style="display:none;">
+            <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/kimberly_24/kimberly-song-24.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="text-container" id="scrollText">
+        Hey Kimberly, it's your special day,<br>
+        Got a little song for you, hope that's okay.<br><br>
+
+        Laughter echoes in the living room, "The Office" on repeat,<br>
+        Our own little world, in every glance we meet.<br><br>
+
+        Every Wednesday swim, where the world fades away,<br>
+        In the pool, we’re weightless, in a dreamlike sway.<br><br>
+
+        Colorful socks and blueberry dreams,<br>
+        Life's too short for anything less, it seems.<br><br>
+
+        We whip up dishes, side by side,<br>
+        Our story's new, but it's shining bright.<br><br>
+
+        On the ice, we glide and spin, in a dance so free,<br>
+        Holding hands, laughing, just you and me.<br><br><br>
+
+        In your tiny bed, we try to fit just right,<br>
+        Falling out, laughing, in the middle of the night.<br><br>
+
+        So here’s to many Wednesdays, and evenings by the screen,<br>
+        To skating through the seasons, and everything in between.<br>
+        You’re a joy in every moment, a light in every day,<br>
+        Happy birthday, Kimberly, in every single way.<br>
+    </div>
+    <button onclick="playAudio()" class="play-button">Play</button>
+</div>
+
+<script>
+    function playAudio() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Calculate the initial bottom offset so that the first line is hidden
+        var initialBottom = -scrollText.clientHeight+14 + 'px';
+        console.log(initialBottom);
+
+        // Set the initial bottom position
+        scrollText.style.transition = 'none';
+        scrollText.style.bottom = initialBottom;
+        scrollText.offsetHeight;  // Force reflow to apply the changes immediately
+
+        // Re-enable transition and start scrolling
+        scrollText.style.transition = 'bottom 160s linear';
+        audio.play();
+        playButton.style.visibility = 'hidden';
+        scrollText.style.visibility = 'visible';
+        scrollText.style.bottom = '100%'; // Start scrolling
+
+        // Add event listener for when audio ends
+        audio.onended = function() {
+            resetElements();
+        };
+    }
+
+    function resetElements() {
+        var audio = document.getElementById('audioPlayer');
+        var playButton = document.querySelector('.play-button');
+        var scrollText = document.getElementById('scrollText');
+
+        // Calculate the initial bottom offset so that the first line is hidden
+        var initialBottom = -scrollText.clientHeight + window.innerHeight + 'px';
+
+        // Ensure transition is off when resetting
+        scrollText.style.transition = 'none';
+        playButton.style.visibility = 'visible';
+        scrollText.style.visibility = 'hidden';
+        scrollText.style.bottom = initialBottom;  // Reset to the original bottom value
+        audio.currentTime = 0;  // Optionally reset the audio time if needed
+    }
+</script>
+
+</body>
+</html>
