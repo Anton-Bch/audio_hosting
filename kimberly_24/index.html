@@ -62,7 +62,7 @@
             bottom: 0; /* Initial bottom position will be adjusted via JavaScript */
             width: 100%;
             text-align: center;
-            font-size: 35px;
+            font-size: 33px;
             color: white;
             z-index: 1;
             visibility: hidden;
@@ -96,7 +96,7 @@
         Our story's new, but it's shining bright.<br><br>
 
         On the ice, we glide and spin, in a dance so free,<br>
-        Holding hands, laughing, just you and me.<br><br><br>
+        Holding hands, laughing, just you and me.<br><br><br><br>
 
         In your tiny bed, we try to fit just right,<br>
         Falling out, laughing, in the middle of the night.<br><br>
@@ -116,7 +116,7 @@
         var scrollText = document.getElementById('scrollText');
 
         // Calculate the initial bottom offset so that the first line is hidden
-        var initialBottom = -scrollText.clientHeight+14 + 'px';
+        var initialBottom = -scrollText.clientHeight-8 + 'px';
         console.log(initialBottom);
 
         // Set the initial bottom position
@@ -125,7 +125,7 @@
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
         // Re-enable transition and start scrolling
-        scrollText.style.transition = 'bottom 160s linear';
+        scrollText.style.transition = 'bottom 250s linear';
         audio.play();
         playButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
