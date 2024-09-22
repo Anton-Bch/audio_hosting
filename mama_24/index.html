@@ -44,7 +44,7 @@
             padding: 100px 200px;
             font-size: 90px;
             margin-top: 40px;
-            margin-bottom: 100px;
+            margin-bottom: 120px;
             cursor: pointer;
             border-radius: 20px;
             transition: all 0.3s;
@@ -57,9 +57,28 @@
             background-color: rgba(105, 105, 105, 0.5);
         }
 
+        .slow-play-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(99, 99, 99, 0.6);
+            border: none;
+            color: rgba(255, 255, 255, 1);
+            padding: 35px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+            z-index: 3;
+        }
+
+        .slow-play-button:hover {
+            background-color: rgba(105, 105, 105, 0.5);
+        }
+
         .text-container {
             position: absolute;
-            bottom: 0; /* Initial bottom position will be adjusted via JavaScript */
+            bottom: 0;
             width: 100%;
             text-align: center;
             font-size: 33px;
@@ -78,9 +97,13 @@
             <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/mama_24/Schlager_Mama_24.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
+        <audio id="slowAudioPlayer" controls style="display:none;">
+            <source src="https://raw.githubusercontent.com/Anton-Bch/audio_hosting/main/mama_24/Langsam_Mama_24.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
     <div class="text-container" id="scrollText">
-        <br><br><br>
+        <br><br>
         Die Zweige kahl, der Himmel grau,<br>
         da sitzt ein Spatz im Morgentau.<br><br>
 
@@ -93,24 +116,38 @@
         Am Vogelbad macht er kurz Rast,<br>
         Erfrischung für den kleinen Gast.<br><br>
 
+        Denn unser Spatz, er zwitschert froh,<br>
+        Als wär der Sommer irgendwo.<br><br>
+
         Trotz grauer trister Jahreszeit,<br>
         ist unser Spatz voll Heiterkeit.<br><br>
 
         Denn unser Spatz, er zwitschert froh,<br>
         Als wär der Sommer irgendwo.<br>
     </div>
-    <button onclick="playAudio()" class="play-button">Play</button>
+    <button onclick="playAudio(false)" class="play-button">Play</button>
+    <button onclick="playAudio(true)" class="slow-play-button">Langsam</button>
 </div>
 
 <script>
-    function playAudio() {
-        var audio = document.getElementById('audioPlayer');
+    function playAudio(slowMode) {
+        var normalAudio = document.getElementById('audioPlayer');
+        var slowAudio = document.getElementById('slowAudioPlayer');
         var playButton = document.querySelector('.play-button');
+        var slowPlayButton = document.querySelector('.slow-play-button');
         var scrollText = document.getElementById('scrollText');
+
+        // Stop both audio players and reset their time
+        normalAudio.pause();
+        slowAudio.pause();
+        normalAudio.currentTime = 0;
+        slowAudio.currentTime = 0;
+
+        var audio = slowMode ? slowAudio : normalAudio;
+        var scrollDuration = slowMode ? '226s' : '170s';
 
         // Calculate the initial bottom offset so that the first line is hidden
         var initialBottom = -scrollText.clientHeight + 'px';
-        console.log(initialBottom);
 
         // Set the initial bottom position
         scrollText.style.transition = 'none';
@@ -118,9 +155,10 @@
         scrollText.offsetHeight;  // Force reflow to apply the changes immediately
 
         // Re-enable transition and start scrolling
-        scrollText.style.transition = 'bottom 220s linear';
+        scrollText.style.transition = 'bottom ' + scrollDuration + ' linear';
         audio.play();
         playButton.style.visibility = 'hidden';
+        slowPlayButton.style.visibility = 'hidden';
         scrollText.style.visibility = 'visible';
         scrollText.style.bottom = '100%'; // Start scrolling
 
@@ -131,8 +169,10 @@
     }
 
     function resetElements() {
-        var audio = document.getElementById('audioPlayer');
+        var normalAudio = document.getElementById('audioPlayer');
+        var slowAudio = document.getElementById('slowAudioPlayer');
         var playButton = document.querySelector('.play-button');
+        var slowPlayButton = document.querySelector('.slow-play-button');
         var scrollText = document.getElementById('scrollText');
 
         // Calculate the initial bottom offset so that the first line is hidden
@@ -141,9 +181,15 @@
         // Ensure transition is off when resetting
         scrollText.style.transition = 'none';
         playButton.style.visibility = 'visible';
+        slowPlayButton.style.visibility = 'visible';
         scrollText.style.visibility = 'hidden';
         scrollText.style.bottom = initialBottom;  // Reset to the original bottom value
-        audio.currentTime = 0;  // Optionally reset the audio time if needed
+        
+        // Reset both audio players
+        normalAudio.pause();
+        slowAudio.pause();
+        normalAudio.currentTime = 0;
+        slowAudio.currentTime = 0;
     }
 </script>
 
